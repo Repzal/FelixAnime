@@ -7,7 +7,7 @@ window.ANIME_LIST = [
     description: "A ninja adventure story.",
     image: "https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg",
     episodes: [
-      { episodeNumber: 1, title: "Enter Naruto Uzumaki!", videoUrl: "https://example.com/naruto-ep1.mp4" },
+      { episodeNumber: 1, title: "Enter Naruto Uzumaki!", videoUrl: "https://douvid.xyz/_v1_douvid/pqsaO0tGWa+kghXGEceldw==/z2RkBt-Hl_.m3u8" },
       { episodeNumber: 2, title: "My Name is Konohamaru!", videoUrl: "https://example.com/naruto-ep2.mp4" }
       // Add more episodes...
     ]
