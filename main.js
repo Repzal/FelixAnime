@@ -61,14 +61,39 @@ function renderAnimeDetail(anime, filter = '') {
     <img src="${anime.image}" alt="${anime.title}" style="width:120px;height:170px;border-radius:6px;">
     <p>${anime.description}</p>
     <h3>Episodes</h3>
-    <ul>
+    <ul id="episodeList">
       ${episodes.map(ep => `
         <li>
           Episode ${ep.episodeNumber}: ${ep.title} <br>
-          <a class="episode-link" href="${ep.videoUrl}" target="_blank">Watch</a>
+          <button class="play-btn" data-video="${ep.videoUrl}" data-title="${ep.title}">Play</button>
         </li>
       `).join('')}
     </ul>
+    <div id="videoPlayerContainer"></div>
+  `;
+
+  // Add event listeners for play buttons
+  document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const videoUrl = this.getAttribute('data-video');
+      const epTitle = this.getAttribute('data-title');
+      showVideoPlayer(videoUrl, anime.title, epTitle);
+    });
+  });
+}
+
+// Show/hide video player
+function showVideoPlayer(url, animeTitle, epTitle) {
+  const container = document.getElementById('videoPlayerContainer');
+  container.innerHTML = `
+    <div class="video-player-box">
+      <h4>${animeTitle} - ${epTitle}</h4>
+      <video controls autoplay width="100%" height="auto" class="video-player">
+        <source src="${url}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="close-video-btn" onclick="document.getElementById('videoPlayerContainer').innerHTML = '';">Close Player</button>
+    </div>
   `;
 }
 
